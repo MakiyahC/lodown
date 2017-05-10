@@ -294,7 +294,7 @@ each(collection, function(value, pos, collection) {
       combined = array[0];
       i = 1;
     }
-    for (; array.length; i++){
+    for (; i < array.length; i++){
       combined = combine(combined, array[i], i, array);
     }
     return combined;
@@ -311,7 +311,8 @@ each(collection, function(value, pos, collection) {
  * @return {Boolean}: Returns updated object 
  */
  
- function extend(copyTo, ...objs ){
+ function extend(copyTo){
+  var objs = Array.prototype.slice.call(arguments, 1);
   for (var i = 0; i < objs.length; i++) {
     // get o at i
     var obj = objs[i];
